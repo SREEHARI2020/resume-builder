@@ -19,13 +19,13 @@ function App() {
     Education:[
       {
         Institute:"",
-        year:"",
+        yearEducation:"",
         Degree:""}
   ],
       
     Experience:[{
             Company:"",
-            year:"",
+            yearExperience:"",
             Designation:""}],
       
       
@@ -40,7 +40,7 @@ function App() {
 
      <Route exact path='/'><Home values={values} setValues={setValues}/></Route>
      
-     <Route exact path='/resume'><ResumeComponent values={values}/></Route>
+     <Route exact path='/resume'><ResumeComponent values={values} /></Route>
      
      </Switch>
      

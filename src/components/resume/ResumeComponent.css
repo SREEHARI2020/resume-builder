@@ -8,22 +8,19 @@
 .Resume-header {
   display: flex;
   justify-content: space-between;
-  margin-left: 180px;
-  margin-right: 180px;
-}
-.Resume-header-name {
-  margin-top: 20px;
+  /* margin-left: 180px;
+    margin-right: 180px; */
 }
 
 .resume-Body {
   margin-top: 50px;
-  margin-left: 180px;
-  margin-right: 240px;
+  /* margin-left: 180px;
+    margin-right: 240px; */
 }
 .resume-Body-Experience h3,
 .resume-Body-Skills h3,
 .resume-Body-Education h3 {
-  color: blue;
+  color: #2953f3;
 }
 .resume-Body {
   display: flex;
@@ -34,8 +31,8 @@
 }
 .resume-Body-Education {
   margin-top: 50px;
-  margin-left: 180px;
-  margin-right: 240px;
+  /* margin-left: 180px;
+    margin-right: 240px; */
 }
 .resume-body-education-card {
   margin-top: 40px;
