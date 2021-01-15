@@ -6,6 +6,11 @@ import Home from './components/home/Home';
 import { Form,Col,Button} from 'react-bootstrap';
 import ResumeComponent from './components/resume/ResumeComponent';
 
+
+
+
+
+
 function App() {
   const[values,setValues]=useState({
 
@@ -14,14 +19,18 @@ function App() {
     Email:"",
     PhoneNo:"",
     Address:"",
- 
-      Institute:"",
-      yearEducation:"",
-      Degree:"",
-
-      Company:"",
-      yearCompany:"",
-      Designation:"",
+    Education:[
+      {
+        Institute:"",
+        year:"",
+        Degree:""}
+  ],
+      
+    Experience:[{
+            Company:"",
+            year:"",
+            Designation:""}],
+      
       
     Skills:""
 
@@ -66,12 +75,13 @@ function App() {
         <Form.Control value={values.Address} onChange={e=>setValues({...values,Address:e.target.value})} placeholder="1234 Main St" />
       </Form.Group>
     
+    
       <Form.Row>
         <Form.Group as={Col} controlId="formGridEducation">
           <Form.Label>Add Education</Form.Label>
-          <Form.Control value={values.Institute} onChange={e=>setValues({...values,Institute:e.target.value})} type="text" placeholder="Institute" />
-          <Form.Control value={values.yearEducation} onChange={e=>setValues({...values,yearEducation:e.target.value})} type="text" className="mt-3" placeholder="year" />
-          <Form.Control value={values.Degree} onChange={e=>setValues({...values,Degree:e.target.value})}type="text" className="mt-3" placeholder="Degree eg:btech" />
+          <Form.Control value={values.Education.Institute} onChange={e=>setValues({...values,Institute:e.target.value})} type="text" placeholder="Institute" />
+          <Form.Control value={values.Education.year} onChange={e=>setValues({...values,year:e.target.value})} type="text" className="mt-3" placeholder="year" />
+          <Form.Control value={values.Education.Degree} onChange={e=>setValues({...values,Degree:e.target.value})}type="text" className="mt-3" placeholder="Degree eg:btech" />
           <Button variant="secondary" type="submit" className="mt-2">
         Add more +
       </Button>
@@ -79,9 +89,9 @@ function App() {
     
         <Form.Group as={Col} controlId="formGridPhone">
           <Form.Label>Experience</Form.Label>
-          <Form.Control value={values.Company} onChange={e=>setValues({...values,Company:e.target.value})} type="text" placeholder="Company" />
-          <Form.Control value={values.yearCompany} onChange={e=>setValues({...values,yearCompany:e.target.value})} type="text" className="mt-3" placeholder="year" />
-          <Form.Control value={values.Designation} onChange={e=>setValues({...values,Designation:e.target.value})} type="text" className="mt-3" placeholder="Designation" />
+          <Form.Control value={values.Experience.Company} onChange={e=>setValues({...values,Company:e.target.value})} type="text" placeholder="Company" />
+          <Form.Control value={values.Experience.year} onChange={e=>setValues({...values,year:e.target.value})} type="text" className="mt-3" placeholder="year" />
+          <Form.Control value={values.Experience.Designation} onChange={e=>setValues({...values,Designation:e.target.value})} type="text" className="mt-3" placeholder="Designation" />
           <Button variant="secondary" type="submit" className="mt-2">
         Add more +
       </Button>
@@ -98,7 +108,7 @@ function App() {
     </Form>
       </div>
 
-     <ResumeComponent/>
+     <ResumeComponent values={values}/>
     
     </div>
   );
