@@ -8,14 +8,13 @@
 .Resume-header {
   display: flex;
   justify-content: space-between;
-  /* margin-left: 180px;
-    margin-right: 180px; */
 }
-
+.Resume-header-name {
+  margin-top: 40px;
+  margin-left: 20px;
+}
 .resume-Body {
   margin-top: 50px;
-  /* margin-left: 180px;
-    margin-right: 240px; */
 }
 .resume-Body-Experience h3,
 .resume-Body-Skills h3,
@@ -31,8 +30,6 @@
 }
 .resume-Body-Education {
   margin-top: 50px;
-  /* margin-left: 180px;
-    margin-right: 240px; */
 }
 .resume-body-education-card {
   margin-top: 40px;
