@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import { Form,Col,Button} from 'react-bootstrap';
+import ResumeComponent from './components/resume/ResumeComponent';
 
 function App() {
   const[values,setValues]=useState({
@@ -30,9 +31,9 @@ function App() {
      <Navbar/>
       <Home/>
       <div className="container">
-<Form>
+<Form className="mt-5">
   <h1> Enter Your Details</h1>
-  <Form.Row>
+  <Form.Row className="mt-4">
     
 
     <Form.Group as={Col} controlId="formGridFirstName">
@@ -97,7 +98,7 @@ function App() {
     </Form>
       </div>
 
-     
+     <ResumeComponent/>
     
     </div>
   );

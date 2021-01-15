@@ -1,0 +1,38 @@
+.Resume-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 180px;
+  margin-right: 180px;
+}
+
+.resume-Body {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-right: 240px;
+}
+.resume-Body-Experience h3,
+.resume-Body-Skills h3,
+.resume-Body-Education h3 {
+  color: blue;
+}
+.resume-Body {
+  display: flex;
+  justify-content: space-between;
+}
+.resume-body-Experience-card {
+  margin-top: 40px;
+}
+.resume-Body-Education {
+  margin-top: 50px;
+  margin-left: 180px;
+  margin-right: 240px;
+}
+.resume-body-education-card {
+  margin-top: 40px;
+}
+
+.testdiv {
+  height: 2px;
+  width: 100%;
+  background-color: rgb(156, 151, 151);
+}
