@@ -1,8 +1,18 @@
+.Resume {
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
 .Resume-header {
   display: flex;
   justify-content: space-between;
   margin-left: 180px;
   margin-right: 180px;
+}
+.Resume-header-name {
+  margin-top: 20px;
 }
 
 .resume-Body {

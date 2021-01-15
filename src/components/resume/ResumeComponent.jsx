@@ -13,7 +13,7 @@ const ResumeComponent = ({values}) => {
                  </h1> 
 
                  <h5 className="Resume-header-email-phone" >
-                   <p>{values.email}</p>
+                   <p>{values.Email}</p>
                     <p>{values.PhoneNo}</p>
                     <p>{values.Address}</p>
                  </h5> 
