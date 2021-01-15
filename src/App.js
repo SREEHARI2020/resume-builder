@@ -8,7 +8,10 @@ import ResumeComponent from './components/resume/ResumeComponent';
 import{BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 
 
+
 function App() {
+  const [expvalues,setExpvalues]=useState();
+  const [eduvalues,setEduvalues]=useState();
   const[values,setValues]=useState({
 
     FirstName:"",
@@ -32,15 +35,22 @@ function App() {
     Skills:""
 
   })
+  const handleExpEduchange=(exp,edu)=>{
+    setExpvalues(exp);
+    setEduvalues(edu);
+  }
   return (
     <Router>
       <div className="App">
     <Navbar/>
      <Switch>
 
-     <Route exact path='/'><Home values={values} setValues={setValues}/></Route>
+     <Route exact path='/'>
+       <Home values={values} setValues={setValues} handleExpEduchange={handleExpEduchange}/> 
+      
+       </Route>
      
-     <Route exact path='/resume'><ResumeComponent values={values} /></Route>
+     <Route exact path='/resume'><ResumeComponent values={values} expvalues={expvalues} eduvalues={eduvalues}/></Route>
      
      </Switch>
      

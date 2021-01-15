@@ -2,27 +2,50 @@ import React,{useState} from 'react';
 import { Form,Col,Button} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import './Home.css'
-
-const Home = ({values,setValues}) => {
+const Home = ({values,setValues,handleExpEduchange}) => {
     const history=useHistory();
     const [fields, setFields] = useState([{ value: null }]);
     const [fieldExperience, setFieldExperience] = useState([{ value: null }]);
-
-    function handleAdd() {
-        const values = [...fields];
-        values.push({ value: null });
-        setFields(values);
-      }
-    function handleAddExperience() {
+      const [expvalues, setExpValues] = useState([]);
+      const [eduvalues, setEduValues] = useState([]);
+      function handleAddExperience() {
         const values = [...fieldExperience];
         values.push({ value: null });
         setFieldExperience(values);
       }
-    //   function handleChange(i, event) {
-    //     const values = [...fields];
-    //     values[i].value = event.target.value;
-    //     setFields(values);
-    //   }
+      function handleAddEducation() {
+        const values = [...fields];
+        values.push({ value: null });
+        setFields(values);
+      }
+    
+      function handleChange(i, event, field) {
+        const values = [...expvalues];
+        if (!values[i]) {
+          values[i] = {};
+        }
+        !(field in values[i]) && (values[i].field = "");
+        values[i][field] = event.target.value;
+        setExpValues(values);
+        console.log("vv", values);
+        // setFields(values);
+        // console.log("fields", fields);
+      }
+      function handleEducationChange(i, event, field) {
+        const values = [...eduvalues];
+        if (!values[i]) {
+          values[i] = {};
+        }
+        !(field in values[i]) && (values[i].field = "");
+        values[i][field] = event.target.value;
+        setEduValues(values);
+        console.log("vv edu", values);
+        // setFields(values);
+        // console.log("fields", fields);
+      }
+      handleExpEduchange(expvalues,eduvalues);
+
+
     return (
         <div className="container">
 
@@ -64,37 +87,91 @@ const Home = ({values,setValues}) => {
    
    
      <Form.Row>
+<Col>
+             {fieldExperience.map((field, idx) => {
+              return (
+                <Form.Group
+                  className="custom-padding"
+                  key={`${field}-${idx}`}
+                  as={Col}
+                  controlId="formGridPhone"
+                >
+                  <Form.Label>Experience</Form.Label>
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) => handleChange(idx, e, "company")}
+                    type="text"
+                    placeholder="Company"
+                  />
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) => handleChange(idx, e, "year")}
+                    type="text"
+                    className="mt-3"
+                    placeholder="year"
+                  />
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) => handleChange(idx, e, "designation")}
+                    type="text"
+                    className="mt-3"
+                    placeholder="Designation"
+                  />
+                </Form.Group>
+              );
+            })}
+            <Button
+              variant="secondary"
+              className="mt-4 "
+              onClick={() => handleAddExperience()}
+            >
+              Add more +
+            </Button>
+          </Col>
 
-    <Col >
-     {fieldExperience.map((field, idx) => {
-         return(
-         <Form.Group className="custom-padding" key={`${field}-${idx}`}as={Col} controlId="formGridPhone">
-         <Form.Label>Experience</Form.Label>
-         <Form.Control value={values.Experience.Company} onChange={e=>setValues({...values,Company:e.target.value})} type="text" placeholder="Company" />
-         <Form.Control value={values.Experience.year} onChange={e=>setValues({...values,yearExperience:e.target.value})} type="text" className="mt-3" placeholder="year" />
-         <Form.Control value={values.Experience.Designation} onChange={e=>setValues({...values,Designation:e.target.value})} type="text" className="mt-3" placeholder="Designation" />
-      
-       </Form.Group>)})}
-       <Button variant="secondary"  className="mt-4 " onClick={() => handleAddExperience()}>
-       Add more +
-     </Button>
-     </Col>
+          <Col>
+             {fields.map((field, idx) => {
+              return (
+                <Form.Group
+                  className="custom-padding"
+                  key={`${field}-${idx}`}
+                  as={Col}
+                  controlId="formGridPhone"
+                >
+                  <Form.Label>Educatiom</Form.Label>
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) =>  handleEducationChange(idx, e, "institute")}
+                    type="text"
+                    placeholder="institute"
+                  />
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) => handleEducationChange(idx, e, "yeareducation")}
+                    type="text"
+                    className="mt-3"
+                    placeholder="year"
+                  />
+                  <Form.Control
+                    // value={field.value || ""}
+                    onChange={(e) =>  handleEducationChange(idx, e, "degree")}
+                    type="text"
+                    className="mt-3"
+                    placeholder="Degree"
+                  />
+                </Form.Group>
+              );
+            })}
+            <Button
+              variant="secondary"
+              className="mt-4 "
+              onClick={() => handleAddEducation()}
+            >
+              Add more +
+            </Button>
+          </Col>
 
-     <Col>
-     {fields.map((field, idx) => {
-         return(
-       <Form.Group  key={`${field}-${idx}`} as={Col} controlId="formGridEducation">
-         <Form.Label>Add Education</Form.Label>
-         <Form.Control value={values.Education.Institute} onChange={e=>setValues({...values,Institute:e.target.value})} type="text" placeholder="Institute" />
-         <Form.Control value={values.Education.year} onChange={e=>setValues({...values,yearEducation:e.target.value})} type="text" className="mt-3" placeholder="year" />
-         <Form.Control value={values.Education.Degree} onChange={e=>setValues({...values,Degree:e.target.value})}type="text" className="mt-3" placeholder="Degree eg:btech" />
-        
-         </Form.Group>)})}
-         <Button variant="secondary" className="mt-2 ml-3" onClick={() =>handleAdd()} >
-       Add more +
-     </Button>
-     </Col>
-      
+
    
        
     
@@ -108,8 +185,16 @@ const Home = ({values,setValues}) => {
        Submit
      </Button>
    </Form>
+  
      </div>
     )
 }
 
 export default Home
+
+
+
+
+
+
+
